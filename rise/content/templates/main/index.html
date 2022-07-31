@@ -1,0 +1,16 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <p>Welcome, <b>{{ user.get_username }}</b>. Thanks for logging in.</p>
+        {% for group in request.user.groups.all %}
+            <p>Part of <b>{{ group }}</b></p>
+        {% endfor %}
+    {% else %}
+        <p>Welcome, new user. Please log in.</p>
+    {% endif %}
+
+{% endblock %}
